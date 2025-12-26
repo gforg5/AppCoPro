@@ -1,0 +1,9 @@
+{
+  "name": "AppCoPro - Project Compiler",
+  "description": "Native Web-to-App Compiler Platform.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
