@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Builder } from './views/Builder';
@@ -12,32 +11,36 @@ import { Terms } from './views/Terms';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0b0e14] text-[#e1e1e1] flex flex-col font-sans selection:bg-blue-600 selection:text-white">
-        {/* Modern Platform Header */}
-        <header className="h-16 flex items-center justify-between px-6 bg-[#161b22]/80 backdrop-blur-md border-b border-[#30363d] shrink-0 shadow-lg z-50 sticky top-0">
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center font-black text-white shadow-xl group-hover:scale-110 transition-transform">AC</div>
-              <span className="text-xl font-extrabold tracking-tighter text-white">AppCoPro <span className="text-blue-500 text-[10px] font-mono ml-1 uppercase border border-blue-500/30 px-1 rounded">Pro v2.5</span></span>
+      <div className="min-h-screen bg-[#05070a] text-[#e1e1e1] flex flex-col font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden">
+        {/* Hyper Premium Platform Header */}
+        <header className="h-20 flex items-center justify-between px-8 bg-[#0a0c10]/80 backdrop-blur-2xl border-b border-white/5 shrink-0 shadow-2xl z-50 sticky top-0">
+          <div className="flex items-center gap-10">
+            <Link to="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity group">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center font-black text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] group-hover:scale-110 transition-transform border border-white/10">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="text-2xl font-black tracking-tighter text-white">AppCoPro <span className="text-blue-500 text-[9px] font-black ml-2 uppercase border border-blue-500/20 px-2 py-0.5 rounded-full tracking-[0.2em]">SMA ENGINE</span></span>
             </Link>
-            <nav className="hidden lg:flex items-center gap-6">
-              <Link to="/dashboard" className="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">My Apps</Link>
-              <Link to="/builder" className="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">Compiler</Link>
-              <Link to="/about" className="text-xs font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">Systems Developer</Link>
+            <nav className="hidden lg:flex items-center gap-8">
+              <Link to="/dashboard" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Workspace</Link>
+              <Link to="/builder" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Compiler</Link>
+              <Link to="/about" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Systems Developer</Link>
             </nav>
           </div>
-          <div className="flex items-center gap-4">
-             <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+          <div className="flex items-center gap-6">
+             <div className="hidden xl:flex items-center gap-3 text-[9px] font-black text-emerald-500 bg-emerald-500/5 px-4 py-1.5 rounded-full border border-emerald-500/20 tracking-[0.2em]">
                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-               CLOUD SIGNING ACTIVE
+               SYSTEM NODES ACTIVE
              </div>
              <Link to="/builder">
-               <button className="bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-black px-5 py-2 rounded-xl uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20 active:scale-95">Compile New</button>
+               <button className="bg-white hover:bg-slate-200 text-black text-[10px] font-black px-6 py-2.5 rounded-xl uppercase tracking-widest transition-all shadow-xl active:scale-95">Compile Now</button>
              </Link>
           </div>
         </header>
         
-        <main className="flex-1 relative bg-[#05070a]">
+        <main className="flex-1 relative">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -50,22 +53,26 @@ export default function App() {
           </Routes>
         </main>
 
-        <footer className="bg-[#05070a] border-t border-white/5 py-12 px-6">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        {/* Hyper Premium Footer */}
+        <footer className="bg-[#07090d] border-t border-white/5 py-16 px-8">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
             <div className="flex flex-col items-center md:items-start">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center font-black text-[10px] text-white">AC</div>
-                <span className="text-sm font-black text-white uppercase tracking-widest">AppCoPro Platform</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center font-black text-[10px] text-white shadow-lg">AC</div>
+                <span className="text-lg font-black text-white uppercase tracking-tighter">AppCoPro Platform</span>
               </div>
-              <p className="text-[10px] text-slate-600 uppercase font-bold tracking-[0.2em]">Systems Architected by Sayed Mohsin Ali</p>
+              <p className="text-[9px] text-slate-600 uppercase font-black tracking-[0.4em]">Systems Developed by Sayed Mohsin Ali</p>
             </div>
             
-            <div className="flex gap-8">
-              <Link to="/contact" className="text-[10px] font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">Contact</Link>
-              <Link to="/privacy" className="text-[10px] font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">Privacy</Link>
-              <Link to="/terms" className="text-[10px] font-bold text-slate-400 hover:text-white uppercase tracking-widest transition-colors">Terms</Link>
-              <Link to="/about" className="text-[10px] font-bold text-blue-500 hover:text-white uppercase tracking-widest transition-colors">The Developer</Link>
+            <div className="flex flex-wrap justify-center gap-10">
+              <Link to="/contact" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Contact</Link>
+              <Link to="/privacy" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Privacy</Link>
+              <Link to="/terms" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Terms</Link>
+              <Link to="/about" className="text-[10px] font-black text-blue-500 hover:text-white uppercase tracking-[0.3em] transition-colors">SMA Developer</Link>
             </div>
+          </div>
+          <div className="mt-16 pt-8 border-t border-white/[0.03] text-center">
+             <p className="text-[8px] text-slate-700 uppercase font-black tracking-[0.6em]">Premium Native Bridge Architecture © 2023</p>
           </div>
         </footer>
       </div>
