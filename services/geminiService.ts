@@ -6,17 +6,54 @@ export class GeminiService {
 
   private get ai(): GoogleGenAI {
     if (!this._ai) {
-      let apiKey = "";
-      try {
-        // Use a safe check for the environment variable injected by the host
-        // @ts-ignore
-        apiKey = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : "";
-      } catch (e) {
-        console.warn("Could not access process.env.API_KEY safely:", e);
-      }
-      this._ai = new GoogleGenAI({ apiKey: apiKey || 'dummy-key' });
+      // Initialize with process.env.API_KEY as required by the guidelines
+      this._ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
     }
     return this._ai;
+  }
+
+  // Fix for error in components/AIImageEditor.tsx: added editImage method
+  async editImage(base64Image: string, prompt: string): Promise<string | undefined> {
+    try {
+      // Strip data URL prefix if present to get raw base64 data
+      const base64Data = base64Image.includes('base64,') 
+        ? base64Image.split('base64,')[1] 
+        : base64Image;
+      
+      // Attempt to extract MIME type or default to image/png
+      const mimeTypeMatch = base64Image.match(/data:([^;]+);/);
+      const mimeType = mimeTypeMatch ? mimeTypeMatch[1] : 'image/png';
+
+      const response = await this.ai.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: {
+          parts: [
+            {
+              inlineData: {
+                data: base64Data,
+                mimeType: mimeType,
+              },
+            },
+            {
+              text: prompt,
+            },
+          ],
+        },
+      });
+
+      if (response.candidates?.[0]?.content?.parts) {
+        // Iterate through all parts to find the image part as per guidelines
+        for (const part of response.candidates[0].content.parts) {
+          if (part.inlineData) {
+            const base64EncodeString: string = part.inlineData.data;
+            return `data:image/png;base64,${base64EncodeString}`;
+          }
+        }
+      }
+    } catch (error) {
+      console.error("AI Image Edit Error:", error);
+    }
+    return undefined;
   }
 
   async generateIcon(prompt: string): Promise<string | undefined> {
@@ -32,6 +69,7 @@ export class GeminiService {
       });
 
       if (response.candidates?.[0]?.content?.parts) {
+        // Iterate through all parts to find the image part
         for (const part of response.candidates[0].content.parts) {
           if (part.inlineData) {
             return `data:image/png;base64,${part.inlineData.data}`;
