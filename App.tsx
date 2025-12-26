@@ -32,7 +32,7 @@ export default function App() {
           <div className="flex items-center gap-6">
              <div className="hidden xl:flex items-center gap-3 text-[9px] font-black text-emerald-500 bg-emerald-500/5 px-4 py-1.5 rounded-full border border-emerald-500/20 tracking-[0.2em]">
                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-               SYSTEM NODES ACTIVE
+               CLOUD NODES ACTIVE
              </div>
              <Link to="/builder">
                <button className="bg-white hover:bg-slate-200 text-black text-[10px] font-black px-6 py-2.5 rounded-xl uppercase tracking-widest transition-all shadow-xl active:scale-95">Compile Now</button>
@@ -61,18 +61,18 @@ export default function App() {
                 <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center font-black text-[10px] text-white shadow-lg">AC</div>
                 <span className="text-lg font-black text-white uppercase tracking-tighter">AppCoPro Platform</span>
               </div>
-              <p className="text-[9px] text-slate-600 uppercase font-black tracking-[0.4em]">Systems Developed by Sayed Mohsin Ali</p>
+              <p className="text-[9px] text-slate-600 uppercase font-black tracking-[0.4em]">System Developed by SMA @2025</p>
             </div>
             
             <div className="flex flex-wrap justify-center gap-10">
               <Link to="/contact" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Contact</Link>
               <Link to="/privacy" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Privacy</Link>
               <Link to="/terms" className="text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Terms</Link>
-              <Link to="/about" className="text-[10px] font-black text-blue-500 hover:text-white uppercase tracking-[0.3em] transition-colors">SMA Developer</Link>
+              <Link to="/about" className="text-[10px] font-black text-blue-500 hover:text-white uppercase tracking-[0.3em] transition-colors">Systems Developer</Link>
             </div>
           </div>
           <div className="mt-16 pt-8 border-t border-white/[0.03] text-center">
-             <p className="text-[8px] text-slate-700 uppercase font-black tracking-[0.6em]">Premium Native Bridge Architecture © 2023</p>
+             <p className="text-[8px] text-slate-700 uppercase font-black tracking-[0.6em]">Premium Native Bridge Architecture © 2025</p>
           </div>
         </footer>
       </div>

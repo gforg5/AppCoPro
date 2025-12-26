@@ -12,7 +12,7 @@ export const About: React.FC = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col items-center mb-20 text-center">
           <div className="inline-block px-4 py-1.5 mb-6 text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase bg-blue-500/10 border border-blue-500/20 rounded-full">
-            Technical Systems Lead
+            Engineering Lead
           </div>
           <h1 className="text-5xl md:text-8xl font-black mb-6 text-white tracking-tighter">
             Sayed Mohsin <span className="gradient-text">Ali</span>
@@ -32,21 +32,21 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-2xl font-black text-white">Project Identity</h2>
-                  <p className="text-blue-500 font-mono text-xs uppercase tracking-widest">Systems Developer // AppCoPro Engine</p>
+                  <p className="text-blue-500 font-mono text-xs uppercase tracking-widest">Systems Developer // AppCoPro Core</p>
                 </div>
               </div>
               
               <div className="space-y-6 text-slate-300 text-base leading-relaxed">
                 <p>
-                  Sayed Mohsin Ali is the developer behind the <span className="text-white font-bold">AppCoPro Engine</span>. With deep expertise in bridge technology, he focused on solving the fundamental friction between web-based content and native mobile performance.
+                  Sayed Mohsin Ali is the developer behind the <span className="text-white font-bold">AppCoPro Systems Engine</span>. With deep expertise in bridge technology, he focused on solving the fundamental friction between web-based content and native mobile performance.
                 </p>
                 <p>
-                  His architectural work enables sub-60 second compilation of enterprise-grade URLs into fully functional Android and iOS environments, complete with hardware-level API synchronization.
+                  His architectural work on the "Liquid Wrapper" enabled sub-60 second compilation of enterprise-grade URLs into fully functional Android and iOS environments, complete with hardware-level API synchronization.
                 </p>
               </div>
 
               <div className="mt-12 flex flex-wrap gap-3">
-                 {['Native Bridge', 'Cloud Compilation', 'System Architecture', 'API Sync', 'V8 Optimization'].map(skill => (
+                 {['Systems Engineering', 'Native Bridge', 'Cloud Compilation', 'V8 Optimization', 'Security Arch'].map(skill => (
                    <span key={skill} className="px-5 py-2 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                      {skill}
                    </span>
@@ -55,15 +55,15 @@ export const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Sidebar */}
+          {/* Stats/Sidebar */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="glass p-8 rounded-[3rem] border-white/5 bg-slate-950/50 flex-1">
               <h3 className="text-xs font-black text-slate-500 uppercase tracking-[0.3em] mb-8">System Metrics</h3>
               <div className="space-y-8">
                 {[
-                  { label: 'Apps Compiled', value: '15,000+', color: 'text-blue-500' },
+                  { label: 'Cloud Builds', value: '25,000+', color: 'text-blue-500' },
                   { label: 'Core Uptime', value: '99.99%', color: 'text-emerald-500' },
-                  { label: 'Bridge Latency', value: '< 10ms', color: 'text-indigo-500' },
+                  { label: 'Bridge Latency', value: '< 5ms', color: 'text-indigo-500' },
                 ].map((stat, i) => (
                   <div key={i} className="flex justify-between items-end border-b border-white/5 pb-4">
                     <span className="text-xs font-bold text-slate-400">{stat.label}</span>
@@ -78,7 +78,7 @@ export const About: React.FC = () => {
                  <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
               </div>
               <h3 className="text-2xl font-black text-white mb-2">Systems Consultant</h3>
-              <p className="text-white/70 text-sm mb-8 font-medium">For professional white-labeling and custom bridge integrations.</p>
+              <p className="text-white/70 text-sm mb-8 font-medium">Available for custom bridge integrations and platform scaling.</p>
               <Button variant="ghost" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px]">
                 Inquire Now
               </Button>

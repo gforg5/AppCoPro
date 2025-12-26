@@ -23,7 +23,7 @@ export const Landing: React.FC = () => {
         
         <p className="text-lg md:text-2xl text-slate-400 mb-14 max-w-3xl mx-auto leading-relaxed font-medium">
           Transform any website into a professional <span className="text-white">Android & iOS</span> application. 
-          Simply paste your URL, upload your favicon, and experience native-grade performance instantly.
+          Simply paste your URL and upload your favicon.
         </p>
         
         <div className="flex flex-col items-center gap-10">
@@ -40,7 +40,7 @@ export const Landing: React.FC = () => {
                ))}
                <div className="w-12 h-12 rounded-full bg-slate-900 border-[3px] border-slate-950 flex items-center justify-center text-[10px] font-black text-white shadow-2xl">+8k</div>
             </div>
-            <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Trusted by developers worldwide</p>
+            <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Active Platform Users</p>
           </div>
         </div>
       </div>
