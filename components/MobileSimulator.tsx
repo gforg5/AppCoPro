@@ -8,10 +8,7 @@ interface MobileSimulatorProps {
 }
 
 export const MobileSimulator: React.FC<MobileSimulatorProps> = ({ config, platform }) => {
-  const isAndroid = platform === AppPlatform.ANDROID;
-  
   // The 'allow' attribute delegates hardware access directly to the loaded URL.
-  // This means the website inside the iframe will prompt for its own permissions.
   const featurePolicy = [
     config.features.cameraAccess ? 'camera *' : '',
     config.features.micAccess ? 'microphone *' : '',
@@ -24,13 +21,17 @@ export const MobileSimulator: React.FC<MobileSimulatorProps> = ({ config, platfo
   ].filter(Boolean).join('; ');
 
   return (
-    <div className="flex flex-col items-center transition-all duration-700 w-full h-full justify-center">
-      <div className={`relative ${isAndroid ? 'rounded-[2.5rem]' : 'rounded-[3.5rem]'} overflow-hidden bg-black border-[12px] border-[#1a1d21] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)] w-[280px] h-[580px] sm:w-[320px] sm:h-[650px] shrink-0`}>
+    <div className="flex flex-col items-center transition-all duration-700 w-full justify-center py-4">
+      {/* Sleeker, Wider Mobile Frame */}
+      <div className={`relative overflow-hidden bg-black border-[6px] border-[#1a1d21] rounded-[2.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8),0_0_20px_rgba(37,99,235,0.1)] w-full max-w-[380px] aspect-[9/18.5] shrink-0 group`}>
         
-        {/* Absolute Full Screen Container */}
-        <div className="w-full h-full bg-white">
+        {/* Subtle Edge Reflection */}
+        <div className="absolute inset-0 border-[1px] border-white/5 rounded-[2.2rem] pointer-events-none z-10"></div>
+
+        {/* Dynamic Content Area */}
+        <div className="w-full h-full bg-slate-950 overflow-hidden">
           {config.url ? (
-            <div className="w-full h-full relative group">
+            <div className="w-full h-full relative">
               <iframe 
                 src={config.url}
                 className="w-full h-full border-none bg-white"
@@ -39,34 +40,40 @@ export const MobileSimulator: React.FC<MobileSimulatorProps> = ({ config, platfo
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-presentation allow-downloads"
               />
               
-              {/* Overlay on Hover: App Metadata */}
-              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 flex flex-col items-center justify-center p-8 text-center z-50">
-                <div className="w-16 h-16 bg-white/10 rounded-2xl mb-4 flex items-center justify-center border border-white/20 overflow-hidden">
+              {/* Overlay on Hover: App Metadata - Subtle and clean */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-8 text-center z-50">
+                <div className="w-20 h-20 bg-white/10 rounded-3xl mb-4 flex items-center justify-center border border-white/20 overflow-hidden shadow-2xl">
                   <img src={config.icon} className="w-full h-full object-cover" alt="app" />
                 </div>
-                <h4 className="font-bold text-white text-base mb-1">{config.name || 'Web Preview'}</h4>
-                <p className="text-[9px] text-slate-400 mb-4 px-2 uppercase tracking-tighter">Running in Native Wrapper</p>
-                <div className="flex flex-wrap justify-center gap-1">
-                  {config.features.cameraAccess && <span className="bg-white/5 px-1.5 py-0.5 rounded text-[7px] text-slate-300 border border-white/10">CAMERA_ENABLED</span>}
-                  {config.features.micAccess && <span className="bg-white/5 px-1.5 py-0.5 rounded text-[7px] text-slate-300 border border-white/10">MIC_ENABLED</span>}
+                <h4 className="font-bold text-white text-lg mb-1">{config.name || 'Web Preview'}</h4>
+                <p className="text-[10px] text-blue-400 mb-6 font-mono tracking-widest uppercase">Native Bridge Active</p>
+                
+                <div className="flex flex-wrap justify-center gap-2">
+                   {config.features.locationAccess && <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>}
+                   {config.features.cameraAccess && <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>}
                 </div>
               </div>
             </div>
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-[#0d1117]">
-               <div className="w-16 h-16 bg-[#161b22] rounded-2xl flex items-center justify-center mb-6 border border-[#30363d] shadow-inner group">
-                  <svg className="w-8 h-8 text-[#30363d] group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            <div className="w-full h-full flex flex-col items-center justify-center p-12 text-center bg-[#0d1117] relative">
+               {/* Background Pattern for Empty State */}
+               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#30363d 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+               
+               <div className="w-20 h-20 bg-[#161b22] rounded-[2rem] flex items-center justify-center mb-8 border border-[#30363d] shadow-2xl transition-transform group-hover:scale-110">
+                  <svg className="w-10 h-10 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0012 3m0 0c.886 0 1.72.103 2.523.29m3.29 1.97l-.05.09A10.002 10.002 0 0112 21"/></svg>
                </div>
-               <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Viewport Ready</p>
+               <p className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] mb-2">Awaiting Stream</p>
+               <p className="text-[9px] text-slate-600 font-medium">Enter a URL to initialize the simulator</p>
             </div>
           )}
         </div>
       </div>
       
-      <div className="mt-8 flex items-center gap-4">
-        <div className={`w-2 h-2 rounded-full ${config.url ? 'bg-green-500' : 'bg-slate-700'} animate-pulse`}></div>
-        <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">
-          {config.url ? 'Live Bridge Connected' : 'Waiting for Target'}
+      {/* Clean Status Indicator */}
+      <div className="mt-8 flex items-center gap-3 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800 shadow-xl">
+        <div className={`w-1.5 h-1.5 rounded-full ${config.url ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : 'bg-slate-700'} ${config.url ? 'animate-pulse' : ''}`}></div>
+        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+          {config.url ? 'Device Online' : 'Standby Mode'}
         </span>
       </div>
     </div>
